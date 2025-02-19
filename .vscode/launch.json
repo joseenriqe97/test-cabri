@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Package",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${fileDirname}",
+            "env": {
+                "HTTPPORT" : "8080",
+                "AWS_ACCESS_KEY_ID": "AKIA2UC3E6QGWDUAGF7O",
+                "AWS_SECRET_ACCESS_KEY":"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",
+                "DATABASE_HOST": "ec2-3-142-166-19.us-east-2.compute.amazonaws.com",
+                "DATABASE_USER":"postgres",
+                "DATABASE_PASSWORD": "J[19C7a3Rw",
+                "DATABASE_DB_NAME" : "anki-memory",
+                "AUTH_TOKEN": "---111233---",
+                "AWS_REGION": "us-east-2",
+                "BUCKET_NAME": "app-memory-bucket",
+                "FILE_BUCKET_NAME": "cards",
+            }
+        }
+    ]
+}
