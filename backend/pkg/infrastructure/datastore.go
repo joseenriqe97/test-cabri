@@ -50,5 +50,6 @@ func Migrate() {
 
 func formatDir(dir string) string {
 	basedir := strings.Split(dir, "test-cabri")[0]
-	return basedir + "test-cabri/backend"
+
+	return basedir + "/test-cabri/backend"
 }
