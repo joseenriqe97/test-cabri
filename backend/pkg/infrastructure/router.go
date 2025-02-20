@@ -8,10 +8,12 @@ import (
 	"github.com/joseenriqe97/test-cabri/config"
 	"github.com/joseenriqe97/test-cabri/pkg/application"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func NewRouter(e *echo.Echo, appCtrl AppController) *echo.Echo {
-
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
 	//PUBLIC
 	publicGroup := e.Group("/public")
 	publicGroup.POST("/auth", appCtrl.User.Authenticate)

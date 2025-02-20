@@ -6,6 +6,7 @@ import (
 
 	"github.com/ansel1/merry"
 	validation "github.com/go-ozzo/ozzo-validation"
+	"github.com/go-ozzo/ozzo-validation/is"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/joseenriqe97/test-cabri/config"
 	"github.com/joseenriqe97/test-cabri/pkg/infrastructure/database"
@@ -72,7 +73,7 @@ func (request *UserRequest) Validate() error {
 	return validation.ValidateStruct(request,
 		validation.Field(&request.Name, validation.Required),
 		validation.Field(&request.LastName, validation.Required),
-		validation.Field(&request.Email, validation.Required),
+		validation.Field(&request.Email, is.Email),
 		validation.Field(&request.Password, validation.Required),
 	)
 }
@@ -109,7 +110,7 @@ func (app *userApplication) Created(ctx echo.Context) error {
 	}
 
 	if existUser.ID != "" {
-		return GenerateResponse(ctx, http.StatusConflict, nil, "User already exists")
+		return GenerateResponse(ctx, http.StatusConflict, nil, "Email already exists")
 	}
 
 	isBlackList, err := app.servicePLD.CheckPld(service.RequestPld{
@@ -169,7 +170,11 @@ func (app *userApplication) Authenticate(ctx echo.Context) error {
 		[]byte(user.Password),
 		[]byte(request.Password),
 	); err != nil {
-		return GenerateResponse(ctx, http.StatusNotFound, nil, "Incorrect password")
+		return GenerateResponse(ctx, http.StatusNotFound, nil, "Incorrect email or password")
+	}
+
+	if user.ID == "" {
+		return GenerateResponse(ctx, http.StatusNotFound, nil, "User not found")
 	}
 
 	token, err := generateToken(user.ID)

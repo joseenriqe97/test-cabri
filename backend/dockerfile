@@ -9,9 +9,6 @@ COPY ./pkg/infrastructure/migrations /app/test-cabri/backend/pkg/infrastructure/
 # Copiamos el archivo go.mod desde el subdirectorio backend
 COPY go.mod .
 
-# COPY . /app/
-
-
 # Copiamos el código fuente al directorio de trabajo
 COPY . .
 
@@ -23,6 +20,7 @@ ARG DATABASE_USER
 ARG DATABASE_PASSWORD
 ARG DATABASE_DB_NAME
 ARG AUTH_TOKEN
+ARG URL_PLD
 
 # Establecemos las variables de entorno
 ENV DATABASE_HOST=$DATABASE_HOST
@@ -30,7 +28,7 @@ ENV DATABASE_USER=$DATABASE_USER
 ENV DATABASE_PASSWORD=$DATABASE_PASSWORD
 ENV DATABASE_DB_NAME=$DATABASE_DB_NAME
 ENV AUTH_TOKEN=$AUTH_TOKEN
-
+ENV URL_PLD=$URL_PLD
 # Instalamos las dependencias
 RUN go mod download
 
