@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "d60ef635-43f4-442c-a87b-629fd652c8a9",
+		"name": "Cabri",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6435982"
+	},
+	"item": [
+		{
+			"name": "User creation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"Jose\",\n    \"lastName\" : \"Bonilla\",\n    \"email\" : \"josessss@gmail.com\",\n    \"password\" : \"123331\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL_BASE}}/public/user",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"public",
+						"user"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TEST",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Jose\",\n    \"lastName\" : \"Bonilla\",\n    \"email\" : \"jose5@gmail.com\",\n    \"password\" : \"123331\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/api/user",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Feb 2025 02:02:13 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "167"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 201,\n    \"message\": \"User created successfully\",\n    \"data\": {\n        \"email\": \"jose5@gmail.com\",\n        \"id\": \"312b8146-7495-4b7e-ab19-0cfea3aa7a6d\",\n        \"lastName\": \"Bonilla\",\n        \"name\": \"Jose\"\n    }\n}"
+				},
+				{
+					"name": "TEST",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Joaquin\",\n    \"lastName\" : \"Guzman\",\n    \"email\" : \"joaquin@guzman.com\",\n    \"password\" : \"123331\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/public/user",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"public",
+								"user"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Feb 2025 03:22:30 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "47"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 403,\n    \"message\": \"User is blacklisted\"\n}"
+				}
+			]
+		},
+		{
+			"name": "User authentication",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"jose5@gmail.com\",\n    \"password\" :\"123331\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL_BASE}}/public/auth",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"public",
+						"auth"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"jose5@gmail.com\",\n    \"password\" :\"123331\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/public/auth",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"public",
+								"auth"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Feb 2025 03:06:09 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "336"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"User authenticated successfully\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMmI4MTQ2LTc0OTUtNGI3ZS1hYjE5LTBjZmVhM2FhN2E2ZCIsImV4cCI6MTc0MDI3OTk2OX0.l-c5_wkoCmp9C4aI74-q8jReMzpc8Gw3mjI9IFGak60\",\n        \"user\": {\n            \"id\": \"312b8146-7495-4b7e-ab19-0cfea3aa7a6d\",\n            \"name\": \"Jose\",\n            \"email\": \"jose5@gmail.com\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_BASE}}/api/user",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/api/user",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Feb 2025 03:18:24 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "144"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"User found successfully\",\n    \"data\": {\n        \"id\": \"312b8146-7495-4b7e-ab19-0cfea3aa7a6d\",\n        \"name\": \"Jose\",\n        \"email\": \"jose5@gmail.com\"\n    }\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL_BASE",
+			"value": "172.18.0.3:3001",
+			"type": "string"
+		}
+	]
+}
