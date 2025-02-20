@@ -1,0 +1,37 @@
+# Utilizamos una imagen base de Golang
+FROM golang:1.21-alpine
+
+# Establecemos el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copiamos el archivo go.mod desde el subdirectorio backend
+COPY go.mod .
+
+# Copiamos el código fuente al directorio de trabajo
+COPY . .
+
+#Argumentos
+ARG DATABASE_HOST
+ARG DATABASE_USER
+ARG DATABASE_PASSWORD
+ARG DATABASE_DB_NAME
+ARG AUTH_TOKEN
+
+# Establecemos las variables de entorno
+ENV DATABASE_HOST=$DATABASE_HOST
+ENV DATABASE_USER=$DATABASE_USER
+ENV DATABASE_PASSWORD=$DATABASE_PASSWORD
+ENV DATABASE_DB_NAME=$DATABASE_DB_NAME
+ENV AUTH_TOKEN=$AUTH_TOKEN
+
+# Instalamos las dependencias
+RUN go mod download
+
+# Construimos la aplicación
+RUN go build -o main cmd/main.go
+
+# Exponemos el puerto (si tu aplicación escucha en un puerto)
+EXPOSE 3001
+
+# Comando para ejecutar la aplicación
+CMD ["./main"]

@@ -21,6 +21,17 @@ func main() {
 		log.Fatal(err, "Error reading .env file!")
 	}
 
+	err = config.NewDBConnection()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer config.CloseConnections()
+
+	if config.EnableMigrations() {
+		infrastructure.Migrate()
+	}
+
 	appController := infrastructure.AppController{
 		User: application.NewUserApplication(),
 	}
